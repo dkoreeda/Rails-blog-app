@@ -1,0 +1,12 @@
+<%= link_to "Back to all Posts", posts_path %>
+<h3><%= @post.title %></h3>
+<p><%= @post.description %></p>
+
+  <% @post_comments.each do |comment| %>
+    <p>Comment: <%= comment.description %></p>
+    <%= link_to "Modify this comment", edit_comment_path(@post, comment) %>
+    <%= link_to "Delete this comment", delete_comment_path(@post, comment), method: :delete, data: {confirm: "Are you sure?"} %>
+  <% end %>
+
+<br>
+<%= link_to "Add comment", new_comment_path %>
